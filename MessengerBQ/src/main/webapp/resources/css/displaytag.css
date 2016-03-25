@@ -1,0 +1,61 @@
+
+h1 {
+	color: #0E1355;
+	font-size: x-large;
+	font-family: Arial;
+}
+
+h2 {
+	color: #0E1355;
+	font-size: large;
+	font-family: Arial;
+}
+
+.mytable table {
+        border: 2px solid #fff;
+        color: white;
+        width: 100%;
+        margin: 20px 0 20px 0 !important;
+        font-family: Arial;
+        border-collapse: collapse;
+/*         font-size: small; */
+}
+
+.mytable td a {
+	text-decoration: none;
+}
+
+.mytable table caption {
+        font-weight: bold;
+        font-size: x-large;
+        margin: 0;
+        padding: 0 0 0.5em;
+        text-align: left;
+}
+
+.mytable th,td {
+
+        padding: 2px 4px 2px 4px !important;
+        text-align: left;
+        vertical-align: top;
+        font-size: small; 
+}
+
+.mytable thead tr, thead tr a{
+		background-color:#0000FF;
+/* 		font-family:Arial; */
+/* 		font-weight:bold; */
+		color: white;
+		text-decoration: none;
+}
+
+.mytable tr.odd,  tr.odd a{
+        background-color: #fff;
+        color: black;
+}
+
+
+.mytable tr.tableRowEven,tr.even, tr.even a {
+        background-color: #CDEAFB;
+        color: black;
+}

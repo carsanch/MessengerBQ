@@ -1,0 +1,7 @@
+/Users/
+/target/
+/.settings
+*.project
+.classpath
+.springBeans
+*.rar
