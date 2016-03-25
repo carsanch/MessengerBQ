@@ -16,6 +16,8 @@ import com.sanchez.carlos.messengerbq.repository.UserRespository;
 @Component
 public class UserServiceImpl implements UserService
 {
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
+
 	@Value("${mail.enable}")
 	private Boolean isEnableSendMail;
 
@@ -27,8 +29,6 @@ public class UserServiceImpl implements UserService
 
 	@Value("${mail.body}")
 	private String BODY;
-
-	private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
 	@Autowired
 	private UserRespository repository;
@@ -45,15 +45,13 @@ public class UserServiceImpl implements UserService
 		}
 		catch(Exception ex)
 		{
-			logger.error(ex.getMessage());
+			LOGGER.error(ex.getMessage());
 		}
 
 		if(isEnableSendMail)
 		{
 			sendMail(user);
 		}
-
-		logger.info("User register with id: " + user.getId());
 	}
 
 	@Override
@@ -70,7 +68,6 @@ public class UserServiceImpl implements UserService
 
 	private void sendMail(User user)
 	{
-		// creates a simple e-mail object
 		SimpleMailMessage email = new SimpleMailMessage();
 
 		email.setFrom(FROM);
@@ -79,6 +76,7 @@ public class UserServiceImpl implements UserService
 		email.setText(BODY.concat(user.getId()));
 
 		mailSender.send(email);
+		LOGGER.debug("Sent mail to:" + user.getEmail());
 	}
 
 }

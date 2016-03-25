@@ -2,6 +2,8 @@ package com.sanchez.carlos.messengerbq.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +13,7 @@ import com.sanchez.carlos.messengerbq.repository.MessageRespository;
 @Component
 public class MessageServiceImpl implements MessageService
 {
+	private static final Logger LOGGER = LoggerFactory.getLogger(MessageServiceImpl.class);
 
 	@Autowired
 	MessageRespository repository;
@@ -18,8 +21,14 @@ public class MessageServiceImpl implements MessageService
 	@Override
 	public void addMessage(Message message)
 	{
-
-		repository.save(message);
+		try
+		{
+			repository.save(message);
+		}
+		catch(Exception ex)
+		{
+			LOGGER.error(ex.getMessage());
+		}
 	}
 
 	@Override

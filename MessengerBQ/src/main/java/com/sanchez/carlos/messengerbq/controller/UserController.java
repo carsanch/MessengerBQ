@@ -42,10 +42,12 @@ public class UserController
 	{
 		if(result.hasErrors())
 		{
+			LOGGER.debug("BindingResult with erros: " + result.getObjectName());
 			return "adduser";
 		}
 		else if(userService.getUser(user.getId()) != null)
 		{
+			LOGGER.warn("User already added with id: " + user.getId());
 			return "alreadyadded";
 		}
 		else
@@ -53,6 +55,7 @@ public class UserController
 			userService.addUser(user);
 		}
 
+		LOGGER.debug("User added with id: " + user.getId());
 		return "okuser";
 	}
 
